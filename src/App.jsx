@@ -41,8 +41,6 @@ function App() {
     />
   })
 
-
-  console.log(items);
   return (
     <div className="App">
       <h1>Item Calctracker</h1>
@@ -57,7 +55,7 @@ function App() {
         resetStates();
       }}>Reset</button>
       }
-      <button onClick={submitItems}>Create receipt</button>
+      {items.length > 0 && <button onClick={submitItems}>Create receipt</button>}
       <div className="item-container padding-tb-1 flex-col flex-center">{itemElements}</div>
       {totalCost && 
       <div> 
