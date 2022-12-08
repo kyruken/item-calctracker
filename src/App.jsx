@@ -8,6 +8,20 @@ function App() {
   const [itemCost, setItemCost] = useState('');
   const [totalCost, setTotalCost] = useState();
 
+  console.log(items);
+  function resetAll() {
+    setItems([]);
+    setItemName('');
+    setItemCost('');
+    setTotalCost();
+
+    const nameInput = document.getElementById('name');
+    const costInput = document.getElementById('cost');
+
+    nameInput.value = '';
+    costInput.value = '';
+
+  }
   function clickHandler(event) {
     event.preventDefault();
     setItems(prevItems => [...prevItems, {name: itemName, cost: itemCost}])
@@ -42,12 +56,12 @@ function App() {
     <div className="App">
       <h1>Item Calctracker</h1>
       <form>
-        <input type='text' placeholder='Name of item' name='name' onChange={(e) => onChangeNameHandler(e)}></input>
-        <input type='text' placeholder='cost' name='cost' onChange={(e) => onChangeCostHandler(e)}></input>
+        <input type='text' placeholder='Name of item' name='name' id='name' onChange={(e) => onChangeNameHandler(e)}></input>
+        <input type='text' placeholder='cost' name='cost' id='cost' onChange={(e) => onChangeCostHandler(e)}></input>
         <button onClick={(event) => clickHandler(event)}>Add Item</button>
       </form>
       {totalCost && 
-      <button>Reset</button>
+      <button onClick={resetAll}>Reset</button>
       }
       <button onClick={submitItems}>Create receipt</button>
       {itemElements}
