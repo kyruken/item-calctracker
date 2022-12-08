@@ -59,7 +59,7 @@ function App() {
       <div className="item-container padding-tb-1 flex-col flex-center">{itemElements}</div>
       {totalCost && 
       <div> 
-        <p>California tax: 9.25%</p>
+        <p>California tax: 9.125%</p>
         <h2>Total cost is ${totalCost}</h2>
       </div>
       }
