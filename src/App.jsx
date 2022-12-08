@@ -7,9 +7,9 @@ function App() {
   
   function clickHandler(event) {
     event.preventDefault();
-    items.push({name: itemName, cost: itemCost})
+    setItems(prevItems => [...prevItems, {name: itemName, cost: itemCost}])
   }
-
+  
   function onChangeNameHandler(event) {
     setItemName(event.target.value);
   }
