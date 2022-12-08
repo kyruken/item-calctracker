@@ -3,4 +3,43 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border: 1.5px solid black;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-sb {
+  justify-content: space-between;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  width: 600px;
+  border: 1.5px solid rgb(57, 229, 57);
+}
+
+.padding-tb-1 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.padding-lr-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.item-container {
+  border-bottom: 1px solid rgb(139, 139, 142);
+  gap: 8px;
 }

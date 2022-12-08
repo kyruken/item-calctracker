@@ -18,11 +18,11 @@ function App() {
   }
 
   function clickHandler(event) {
+    event.preventDefault();
     const nameInput = document.getElementById('name');
     const costInput = document.getElementById('cost');
-    setItems(prevItems => [...prevItems, {name: nameInput.value, cost: costInput.value}])
 
-    event.preventDefault();
+    setItems(prevItems => [...prevItems, {name: nameInput.value, cost: costInput.value}]).then(resetInputs());
   }
   
   function submitItems() {
@@ -42,17 +42,14 @@ function App() {
   })
 
 
+  console.log(items);
   return (
     <div className="App">
       <h1>Item Calctracker</h1>
       <form>
         <input type='text' placeholder='Name of item' name='name' id='name'></input>
         <input type='text' placeholder='cost' name='cost' id='cost'></input>
-        <button onClick={(event) => {
-          clickHandler(event);
-          resetInputs;
-        }
-        }>Add Item</button>
+        <button onClick={(event) => clickHandler(event)}>Add Item</button>
       </form>
       {totalCost && 
       <button onClick={() => {
@@ -61,7 +58,7 @@ function App() {
       }}>Reset</button>
       }
       <button onClick={submitItems}>Create receipt</button>
-      {itemElements}
+      <div className="item-container padding-tb-1 flex-col flex-center">{itemElements}</div>
       {totalCost && 
       <div> 
         <p>California tax: 9.25%</p>
