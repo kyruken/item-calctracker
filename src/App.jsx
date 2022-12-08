@@ -1,28 +1,28 @@
 import { useState } from 'react';
 
 import Item from './components/item';
-
+import './App.css';
 function App() {
   const [items, setItems] = useState([]);
   const [totalCost, setTotalCost] = useState();
 
-  function resetAll() {
-    setItems([]);
-    setTotalCost();
-
+  function resetInputs() {
     const nameInput = document.getElementById('name');
     const costInput = document.getElementById('cost');
     nameInput.value = '';
     costInput.value = '';
-
+  }
+  function resetStates() {
+    setItems([]);
+    setTotalCost();
   }
 
   function clickHandler(event) {
     const nameInput = document.getElementById('name');
     const costInput = document.getElementById('cost');
+    setItems(prevItems => [...prevItems, {name: nameInput.value, cost: costInput.value}])
 
     event.preventDefault();
-    setItems(prevItems => [...prevItems, {name: nameInput.value, cost: costInput.value}])
   }
   
   function submitItems() {
@@ -48,10 +48,17 @@ function App() {
       <form>
         <input type='text' placeholder='Name of item' name='name' id='name'></input>
         <input type='text' placeholder='cost' name='cost' id='cost'></input>
-        <button onClick={(event) => clickHandler(event)}>Add Item</button>
+        <button onClick={(event) => {
+          clickHandler(event);
+          resetInputs;
+        }
+        }>Add Item</button>
       </form>
       {totalCost && 
-      <button onClick={resetAll}>Reset</button>
+      <button onClick={() => {
+        resetInputs();
+        resetStates();
+      }}>Reset</button>
       }
       <button onClick={submitItems}>Create receipt</button>
       {itemElements}
