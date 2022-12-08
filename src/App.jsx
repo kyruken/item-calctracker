@@ -30,7 +30,7 @@ function App() {
     for (let x = 0; x < items.length; x++) {
         total += parseInt(items[x].cost);
     }
-    total += total * .9125;
+    total += total * .091250;
     setTotalCost(total);
   }
 
