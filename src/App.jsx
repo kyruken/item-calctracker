@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import Item from './components/item';
+
 function App() {
-  
   const [items, setItems] = useState([]);
   const [totalCost, setTotalCost] = useState();
 
@@ -12,7 +12,6 @@ function App() {
 
     const nameInput = document.getElementById('name');
     const costInput = document.getElementById('cost');
-
     nameInput.value = '';
     costInput.value = '';
 
@@ -58,7 +57,7 @@ function App() {
       {itemElements}
       {totalCost && 
       <div> 
-        <p>Item tax: 9.25%</p>
+        <p>California tax: 9.25%</p>
         <h2>Total cost is ${totalCost}</h2>
       </div>
       }
