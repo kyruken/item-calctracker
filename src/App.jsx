@@ -49,7 +49,7 @@ function App() {
       <form>
         <input type='text' placeholder='Name of item' name='name' id='name'></input>
         <input type='text' placeholder='cost' name='cost' id='cost'></input>
-        <button onClick={(event) => clickHandler(event)}>Add Item</button>
+        {!totalCost && <button onClick={(event) => clickHandler(event)}>Add Item</button>}
       </form>
       {totalCost && 
       <button onClick={() => {
