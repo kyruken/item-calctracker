@@ -4,15 +4,10 @@ import Item from './components/item';
 function App() {
   
   const [items, setItems] = useState([]);
-  const [itemName, setItemName] = useState('');
-  const [itemCost, setItemCost] = useState('');
   const [totalCost, setTotalCost] = useState();
 
-  console.log(items);
   function resetAll() {
     setItems([]);
-    setItemName('');
-    setItemCost('');
     setTotalCost();
 
     const nameInput = document.getElementById('name');
@@ -22,9 +17,13 @@ function App() {
     costInput.value = '';
 
   }
+
   function clickHandler(event) {
+    const nameInput = document.getElementById('name');
+    const costInput = document.getElementById('cost');
+
     event.preventDefault();
-    setItems(prevItems => [...prevItems, {name: itemName, cost: itemCost}])
+    setItems(prevItems => [...prevItems, {name: nameInput.value, cost: costInput.value}])
   }
   
   function submitItems() {
@@ -34,14 +33,6 @@ function App() {
     }
     total += total * .925;
     setTotalCost(total);
-  }
-  
-  function onChangeNameHandler(event) {
-    setItemName(event.target.value);
-  }
-
-  function onChangeCostHandler(event) {
-    setItemCost(event.target.value);
   }
 
   const itemElements = items.map(item => {
@@ -56,8 +47,8 @@ function App() {
     <div className="App">
       <h1>Item Calctracker</h1>
       <form>
-        <input type='text' placeholder='Name of item' name='name' id='name' onChange={(e) => onChangeNameHandler(e)}></input>
-        <input type='text' placeholder='cost' name='cost' id='cost' onChange={(e) => onChangeCostHandler(e)}></input>
+        <input type='text' placeholder='Name of item' name='name' id='name'></input>
+        <input type='text' placeholder='cost' name='cost' id='cost'></input>
         <button onClick={(event) => clickHandler(event)}>Add Item</button>
       </form>
       {totalCost && 
